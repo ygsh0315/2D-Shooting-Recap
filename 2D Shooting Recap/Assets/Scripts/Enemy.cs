@@ -31,4 +31,10 @@ public class Enemy : MonoBehaviour
         //2. 이동하고 싶다.
         transform.position += dir * speed * Time.deltaTime;
     }
+    //다른 물체와 부딪혔을 때 갸도 죽고 나도 죽고...
+    private void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+        Destroy(collision.gameObject);
+    }
 }
