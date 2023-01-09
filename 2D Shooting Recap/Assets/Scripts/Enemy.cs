@@ -1,23 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//아래로 계속 이동하고 싶다.
 
-//타겟을 따라다니게 하고 싶다.
-//필요속성 : 이동속도
+//70%확률로 아래로 방향을 잡고 그렇지 않으면 타겟쪽으로 이동하고 싶다.
+
+//필요속성 : 이동속도,타겟, 확률,방향
 public class Enemy : MonoBehaviour
 {
     //필요속성 : 이동속도
     public float speed = 3;
     //필요속성 : 타겟
-    public Transform target;
+    public Transform target = GameObject.Find("Player").transform;
+    //방향
     Vector3 dir;
+    //확률
+    int randomNumber;
     // Start is called before the first frame update
 
     void Start()
     {
-        dir = target.transform.position - transform.position;
-        dir.Normalize();
+        //확률을 구해야한다
+        randomNumber = Random.Range(0, 10);
+        //확률이 70%에 속한다면
+        if (randomNumber >= 3)
+        {
+            //방향을 아래로 설정하고 싶다.
+            dir = Vector3.down;
+        }
+        //그렇지 않으면
+        else
+        {
+            //타겟쪽으로          
+            dir = target.transform.position - transform.position;
+            dir.Normalize();
+        }
     }
 
     // Update is called once per frame
