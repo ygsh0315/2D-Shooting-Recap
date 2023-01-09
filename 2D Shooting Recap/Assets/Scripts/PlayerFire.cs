@@ -4,6 +4,8 @@ using UnityEngine;
 
 //사용자가 발사버튼을 누르면 총알을 발사하고 싶다.
 //필요속성 : 총알공장, 총구(자기자신)
+//탄창에 총알을 미리 생성해 놓고 발사하고 싶다.
+//필요속성 : 탄창 -> 컬렉션(배열, 리스트)
 
 public class PlayerFire : MonoBehaviour
 {
