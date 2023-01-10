@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     //필요속성 : 이동속도
     public float speed = 3;
     //필요속성 : 타겟
-    public Transform target = GameObject.Find("Player").transform;
+    public Transform target;
     //방향
     Vector3 dir;
     //확률
@@ -19,6 +19,7 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
+        target = GameObject.Find("Player").transform;
         //확률을 구해야한다
         randomNumber = Random.Range(0, 10);
         //확률이 70%에 속한다면
@@ -50,7 +51,22 @@ public class Enemy : MonoBehaviour
     //다른 물체와 부딪혔을 때 갸도 죽고 나도 죽고...
     private void OnCollisionEnter(Collision collision)
     {
+        //만약 부딪힌 녀석이 bullet이라면
+        if (collision.gameObject.name.Contains("Bullet"))
+        {
+            //탄창에 집어넣고 싶다.
+            //1. Player 게임오브젝트가 있어야한다
+            //2. PlayerFire가 필요하다.
+            PlayerFire player = target.GetComponent<PlayerFire>();
+            player.bulletPool.Add(collision.gameObject);
+            collision.gameObject.SetActive(false);
+        }
+        //그렇지 않으면 
+        else
+        {
+            //없애자
+            //Destroy(collision.gameObject);
+        }
         Destroy(gameObject);
-        Destroy(collision.gameObject);
     }
 }
