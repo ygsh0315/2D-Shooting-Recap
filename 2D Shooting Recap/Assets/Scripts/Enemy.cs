@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //만약 부딪힌 녀석이 bullet이라면
-        if (collision.gameObject.name.Contains("Bullet"))
+        if (collision.gameObject.tag == "Player")
         {
             //탄창에 집어넣고 싶다.
             //1. Player 게임오브젝트가 있어야한다
@@ -64,8 +64,21 @@ public class Enemy : MonoBehaviour
         //그렇지 않으면 
         else
         {
-            //없애자
-            //Destroy(collision.gameObject);
+            //플레이어의 hp를 하나 깎자
+            //1. player
+            //2. playerhealth
+            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            if (player)
+            {
+                player.hp--;
+                //3. hp를 감소시키고 싶다.
+                //만약 플레이어의 체력이 다 되면
+                if (player.hp <= 0)
+                {
+                    //없애자
+                    //Destroy(collision.gameObject);
+                }
+            }
         }
         Destroy(gameObject);
     }
