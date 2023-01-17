@@ -70,14 +70,10 @@ public class Enemy : MonoBehaviour
             PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
             if (player)
             {
-                player.hp--;
                 //3. hp를 감소시키고 싶다.
-                //만약 플레이어의 체력이 다 되면
-                if (player.hp <= 0)
-                {
-                    //없애자
-                    //Destroy(collision.gameObject);
-                }
+                // 현재 hp에서 -1해서 저장하고 싶다.
+                //player.SetHP(player.GetHP() - 1);
+                player.HP--;
             }
         }
         Destroy(gameObject);

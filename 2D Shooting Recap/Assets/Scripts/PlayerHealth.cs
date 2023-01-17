@@ -6,7 +6,38 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour
 {
     //필요속성 : 체력
-    public int hp = 3;
+    int hp = 3;
+    //hp를 property로 바꾸고 싶다.
+    public int HP
+    {
+        get
+        {
+            return hp;
+        }
+        set
+        {
+            hp = value;
+            if (hp <= 0)
+            {
+                //없애자
+                //Destroy(gameObject);
+            }
+        }
+    }
+    //public void SetHP(int value)
+    //{
+    //    hp = value;
+    //    if (hp <= 0)
+    //    {
+    //        //없애자
+    //        //Destroy(gameObject);
+    //    }
+    //}
+
+    //public int GetHP()
+    //{
+    //    return hp;
+    //}
     // Start is called before the first frame update
     void Start()
     {
