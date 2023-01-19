@@ -64,17 +64,18 @@ public class Enemy : MonoBehaviour
         //그렇지 않으면 
         else
         {
-            //플레이어의 hp를 하나 깎자
-            //1. player
-            //2. playerhealth
-            PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
-            if (player)
-            {
-                //3. hp를 감소시키고 싶다.
-                // 현재 hp에서 -1해서 저장하고 싶다.
-                //player.SetHP(player.GetHP() - 1);
-                player.HP--;
-            }
+            ////플레이어의 hp를 하나 깎자
+            ////1. player
+            ////2. playerhealth
+            //PlayerHealth player = collision.gameObject.GetComponent<PlayerHealth>();
+            //if (player)
+            //{
+            //    //3. hp를 감소시키고 싶다.
+            //    // 현재 hp에서 -1해서 저장하고 싶다.
+            //    //player.SetHP(player.GetHP() - 1);
+            //    player.HP--;
+            //}
+            PlayerHealth.Instance.HP--;
         }
         Destroy(gameObject);
     }

@@ -5,6 +5,7 @@ using UnityEngine;
 //필요속성 : 체력
 public class PlayerHealth : MonoBehaviour
 {
+
     //필요속성 : 체력
     int hp = 3;
     //hp를 property로 바꾸고 싶다.
@@ -24,7 +25,7 @@ public class PlayerHealth : MonoBehaviour
             }
         }
     }
-    //public void SetHP(int value)
+    //public void SetHP(int value) 
     //{
     //    hp = value;
     //    if (hp <= 0)
@@ -38,6 +39,16 @@ public class PlayerHealth : MonoBehaviour
     //{
     //    return hp;
     //}
+
+    // static에 관리자 변수만 등록해놓고 사용하자
+    public static PlayerHealth Instance;
+    private void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
