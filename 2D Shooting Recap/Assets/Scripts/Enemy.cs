@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         //만약 부딪힌 녀석이 bullet이라면
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag != "Player")
         {
             //탄창에 집어넣고 싶다.
             //1. Player 게임오브젝트가 있어야한다
