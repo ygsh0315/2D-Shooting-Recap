@@ -5,6 +5,8 @@ using UnityEngine;
 //70%확률로 아래로 방향을 잡고 그렇지 않으면 타겟쪽으로 이동하고 싶다.
 
 //필요속성 : 이동속도,타겟, 확률,방향
+//죽을때 폭발효과 발생시키고 싶다
+//필요속성 : 폭발효과 공장
 public class Enemy : MonoBehaviour
 {
     //필요속성 : 이동속도
@@ -15,6 +17,8 @@ public class Enemy : MonoBehaviour
     Vector3 dir;
     //확률
     int randomNumber;
+    public GameObject ExplosionFactory;
+    
     // Start is called before the first frame update
 
     void Start()
@@ -51,6 +55,9 @@ public class Enemy : MonoBehaviour
     //다른 물체와 부딪혔을 때 갸도 죽고 나도 죽고...
     private void OnCollisionEnter(Collision collision)
     {
+        //폭발효과 발생시키기
+        GameObject explosion = Instantiate(ExplosionFactory);
+        explosion.transform.position = transform.position;
         //만약 부딪힌 녀석이 bullet이라면
         if (collision.gameObject.tag != "Player")
         {
