@@ -17,12 +17,15 @@ public class Enemy : MonoBehaviour
     Vector3 dir;
     //확률
     int randomNumber;
-    public GameObject ExplosionFactory;
+    GameObject ExplosionFactory;
     
     // Start is called before the first frame update
 
     void Start()
     {
+        //동적으로 폭발효과를 로딩하고 싶다.
+        ExplosionFactory = (GameObject)Resources.Load("Prefabs/Explosion");
+        //ExplosionFactory = Resources.Load("Prefabs/Explosion") as GameObject;
         target = GameObject.Find("Player").transform;
         //확률을 구해야한다
         randomNumber = Random.Range(0, 10);
